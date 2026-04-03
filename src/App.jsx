@@ -13,7 +13,7 @@ function App() {
         <div className="flex">
           <Sidebar />
 
-          <div className="flex-1 bg-gray-100 min-h-screen">
+          <div className="flex-1 min-h-screen bg-gray-100 dark:bg-gray-900 dark:text-white">
             <Navbar />
             <Routes>
               <Route path="/" element={<Dashboard />} />

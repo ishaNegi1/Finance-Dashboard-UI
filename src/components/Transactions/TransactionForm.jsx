@@ -40,9 +40,7 @@ const TransactionForm = () => {
         required
         className="border p-2 rounded"
         value={formData.date}
-        onChange={(e) =>
-          setFormData({ ...formData, date: e.target.value })
-        }
+        onChange={(e) => setFormData({ ...formData, date: e.target.value })}
       />
 
       <input
@@ -57,22 +55,20 @@ const TransactionForm = () => {
       />
 
       <select
-  className="border p-2 rounded"
-  value={formData.category}
-  onChange={(e) =>
-    setFormData({ ...formData, category: e.target.value })
-  }
->
-  <option value="">Select Category</option>
-  <option value="Food">Food</option>
-  <option value="Travel">Travel</option>
-  <option value="Shopping">Shopping</option>
-  <option value="Bills">Bills</option>
-  <option value="Entertainment">Entertainment</option>
-  <option value="Salary">Salary</option>
-  <option value="Freelance">Freelance</option>
-  <option value="Food">Hospital</option>
-</select>
+        className="border p-2 rounded"
+        value={formData.category}
+        onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+      >
+        <option value="">Select Category</option>
+        <option value="Food">Food</option>
+        <option value="Travel">Travel</option>
+        <option value="Shopping">Shopping</option>
+        <option value="Bills">Bills</option>
+        <option value="Entertainment">Entertainment</option>
+        <option value="Salary">Salary</option>
+        <option value="Freelance">Freelance</option>
+        <option value="Food">Hospital</option>
+      </select>
 
       <input
         type="number"
@@ -80,17 +76,13 @@ const TransactionForm = () => {
         required
         className="border p-2 rounded"
         value={formData.amount}
-        onChange={(e) =>
-          setFormData({ ...formData, amount: e.target.value })
-        }
+        onChange={(e) => setFormData({ ...formData, amount: e.target.value })}
       />
 
       <select
         className="border p-2 rounded"
         value={formData.type}
-        onChange={(e) =>
-          setFormData({ ...formData, type: e.target.value })
-        }
+        onChange={(e) => setFormData({ ...formData, type: e.target.value })}
       >
         <option value="expense">Expense</option>
         <option value="income">Income</option>

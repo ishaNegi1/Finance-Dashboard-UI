@@ -1,12 +1,8 @@
 import { useFinance } from "../../context/FinanceContext";
 
 const DateFilter = () => {
-  const {
-    selectedMonth,
-    setSelectedMonth,
-    selectedYear,
-    setSelectedYear,
-  } = useFinance();
+  const { selectedMonth, setSelectedMonth, selectedYear, setSelectedYear } =
+    useFinance();
 
   return (
     <div className="flex gap-4">

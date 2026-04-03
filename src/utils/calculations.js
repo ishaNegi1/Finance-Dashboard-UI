@@ -47,18 +47,48 @@ export const expenseFrequency = (transactions) => {
   }));
 };
 
-export const monthlyExpenses = (transactions) => {
+export const monthlyExpenses = (transactions, selectedYear) => {
   const data = {};
 
   transactions.forEach((t) => {
+    const [year, month] = t.date.split("-");
+
     if (t.type === "expense") {
-      const month = t.date.slice(0, 7); // YYYY-MM
-      data[month] = (data[month] || 0) + t.amount;
+      if (selectedYear === "all" || year === selectedYear) {
+        const key = `${year}-${month}`;
+        data[key] = (data[key] || 0) + t.amount;
+      }
     }
   });
 
-  return Object.keys(data).map((key) => ({
-    month: key,
-    expense: data[key],
+  return Object.keys(data)
+    .sort()
+    .map((key) => ({
+      month: key,
+      expense: data[key],
+    }));
+};
+
+export const getBalanceTrend = (transactions) => {
+  let balance = 0;
+  const dailyBalance = {};
+
+  const sorted = [...transactions].sort(
+    (a, b) => new Date(a.date) - new Date(b.date),
+  );
+
+  sorted.forEach((t) => {
+    if (t.type === "income") {
+      balance += t.amount;
+    } else {
+      balance -= t.amount;
+    }
+
+    dailyBalance[t.date] = balance;
+  });
+
+  return Object.keys(dailyBalance).map((date) => ({
+    date,
+    balance: dailyBalance[date],
   }));
 };

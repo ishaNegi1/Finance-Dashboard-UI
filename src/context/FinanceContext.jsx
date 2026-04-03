@@ -13,12 +13,12 @@ export const FinanceProvider = ({ children }) => {
   const [search, setSearch] = useState("");
   const [filterType, setFilterType] = useState("all");
 
-const currentDate = new Date();
-const currentMonth = String(currentDate.getMonth() + 1).padStart(2, "0");
-const currentYear = String(currentDate.getFullYear());
+  const currentDate = new Date();
+  const currentMonth = String(currentDate.getMonth() + 1).padStart(2, "0");
+  const currentYear = String(currentDate.getFullYear());
 
-const [selectedMonth, setSelectedMonth] = useState(currentMonth);
-const [selectedYear, setSelectedYear] = useState(currentYear);
+  const [selectedMonth, setSelectedMonth] = useState(currentMonth);
+  const [selectedYear, setSelectedYear] = useState(currentYear);
 
   useEffect(() => {
     localStorage.setItem("transactions", JSON.stringify(transactions));
@@ -31,6 +31,21 @@ const [selectedYear, setSelectedYear] = useState(currentYear);
   const deleteTransaction = (id) => {
     setTransactions(transactions.filter((t) => t.id !== id));
   };
+
+  const [darkMode, setDarkMode] = useState(() => {
+    const saved = localStorage.getItem("darkMode");
+    return saved ? JSON.parse(saved) : false;
+  });
+
+  useEffect(() => {
+    localStorage.setItem("darkMode", JSON.stringify(darkMode));
+
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [darkMode]);
 
   return (
     <FinanceContext.Provider
@@ -48,6 +63,8 @@ const [selectedYear, setSelectedYear] = useState(currentYear);
         setSelectedMonth,
         selectedYear,
         setSelectedYear,
+        darkMode,
+        setDarkMode,
       }}
     >
       {children}

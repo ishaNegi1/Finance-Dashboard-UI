@@ -1,6 +1,20 @@
-import { PieChart, Pie, Tooltip, ResponsiveContainer, Cell, Legend } from "recharts";
+import {
+  PieChart,
+  Pie,
+  Tooltip,
+  ResponsiveContainer,
+  Cell,
+  Legend,
+} from "recharts";
 
-const COLORS = ["#3B82F6", "#EF4444", "#10B981", "#F59E0B", "#8B5CF6", "#EC4899"];
+const COLORS = [
+  "#3B82F6",
+  "#EF4444",
+  "#10B981",
+  "#F59E0B",
+  "#8B5CF6",
+  "#EC4899",
+];
 
 const ExpensePieChart = ({ data }) => {
   return (
@@ -8,7 +22,7 @@ const ExpensePieChart = ({ data }) => {
       <h2 className="mb-4 font-semibold">Expense Breakdown</h2>
 
       {data.length === 0 ? (
-        <p className="text-gray-500">No expense data available</p>
+        <p className="text-gray-500">No data available for selected period</p>
       ) : (
         <ResponsiveContainer width="100%" height={300}>
           <PieChart>
@@ -26,7 +40,13 @@ const ExpensePieChart = ({ data }) => {
                 />
               ))}
             </Pie>
-            <Tooltip />
+            <Tooltip
+              contentStyle={{
+                backgroundColor: "#1F2937",
+                border: "none",
+                color: "white",
+              }}
+            />
             <Legend />
           </PieChart>
         </ResponsiveContainer>

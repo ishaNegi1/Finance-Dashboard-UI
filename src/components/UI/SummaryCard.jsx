@@ -8,9 +8,7 @@ const SummaryCard = ({ title, amount }) => {
   return (
     <div className="bg-white shadow-md rounded-2xl p-5">
       <h3 className="text-gray-500 text-sm">{title}</h3>
-      <p className={`text-2xl font-bold mt-2 ${getColor()}`}>
-        ₹ {amount}
-      </p>
+      <p className={`text-2xl font-bold mt-2 ${getColor()}`}>₹ {amount}</p>
     </div>
   );
 };

@@ -3,7 +3,13 @@ import SummaryCard from "../components/UI/SummaryCard";
 import BalanceChart from "../components/Dashboard/BalanceChart";
 import ExpensePieChart from "../components/Dashboard/ExpensePieChart";
 import MonthlyExpenseChart from "../components/Dashboard/MonthlyExpenseChart";
-import { calculateSummary, categoryBreakdown, expenseFrequency, monthlyExpenses } from "../utils/calculations";
+import {
+  calculateSummary,
+  categoryBreakdown,
+  expenseFrequency,
+  monthlyExpenses,
+  getBalanceTrend,
+} from "../utils/calculations";
 import ExpenseFrequencyChart from "../components/Dashboard/ExpenseFrequencyChart";
 
 const Dashboard = () => {
@@ -19,8 +25,9 @@ const Dashboard = () => {
 
   const summary = calculateSummary(filteredTransactions);
   const pieData = categoryBreakdown(filteredTransactions);
-  const frequencyData  = expenseFrequency(filteredTransactions);
-  const monthlyExpenseData = monthlyExpenses(transactions);
+  const frequencyData = expenseFrequency(filteredTransactions);
+  const monthlyExpenseData = monthlyExpenses(transactions, selectedYear);
+  const balanceData = getBalanceTrend(filteredTransactions);
 
   return (
     <div className="p-6 space-y-6">
@@ -31,9 +38,9 @@ const Dashboard = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <BalanceChart data={filteredTransactions} />
+        <BalanceChart data={balanceData} />
         <ExpensePieChart data={pieData} />
-        <ExpenseFrequencyChart data={frequencyData } />
+        <ExpenseFrequencyChart data={frequencyData} />
         <MonthlyExpenseChart data={monthlyExpenseData} />
       </div>
     </div>
