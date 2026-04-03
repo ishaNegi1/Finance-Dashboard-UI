@@ -56,16 +56,23 @@ const TransactionForm = () => {
         }
       />
 
-      <input
-        type="text"
-        placeholder="Category"
-        required
-        className="border p-2 rounded"
-        value={formData.category}
-        onChange={(e) =>
-          setFormData({ ...formData, category: e.target.value })
-        }
-      />
+      <select
+  className="border p-2 rounded"
+  value={formData.category}
+  onChange={(e) =>
+    setFormData({ ...formData, category: e.target.value })
+  }
+>
+  <option value="">Select Category</option>
+  <option value="Food">Food</option>
+  <option value="Travel">Travel</option>
+  <option value="Shopping">Shopping</option>
+  <option value="Bills">Bills</option>
+  <option value="Entertainment">Entertainment</option>
+  <option value="Salary">Salary</option>
+  <option value="Freelance">Freelance</option>
+  <option value="Food">Hospital</option>
+</select>
 
       <input
         type="number"

@@ -2,12 +2,25 @@ import { useFinance } from "../context/FinanceContext";
 import SummaryCard from "../components/UI/SummaryCard";
 import BalanceChart from "../components/Dashboard/BalanceChart";
 import ExpensePieChart from "../components/Dashboard/ExpensePieChart";
-import { calculateSummary, categoryBreakdown } from "../utils/calculations";
+import MonthlyExpenseChart from "../components/Dashboard/MonthlyExpenseChart";
+import { calculateSummary, categoryBreakdown, expenseFrequency, monthlyExpenses } from "../utils/calculations";
+import ExpenseFrequencyChart from "../components/Dashboard/ExpenseFrequencyChart";
 
 const Dashboard = () => {
-  const { transactions } = useFinance();
-  const summary = calculateSummary(transactions);
-  const pieData = categoryBreakdown(transactions);
+  const { transactions, selectedMonth, selectedYear } = useFinance();
+
+  const filteredTransactions = transactions.filter((t) => {
+    const [year, month] = t.date.split("-");
+    return (
+      (selectedMonth === "all" || month === selectedMonth) &&
+      (selectedYear === "all" || year === selectedYear)
+    );
+  });
+
+  const summary = calculateSummary(filteredTransactions);
+  const pieData = categoryBreakdown(filteredTransactions);
+  const frequencyData  = expenseFrequency(filteredTransactions);
+  const monthlyExpenseData = monthlyExpenses(transactions);
 
   return (
     <div className="p-6 space-y-6">
@@ -18,8 +31,10 @@ const Dashboard = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <BalanceChart data={transactions} />
+        <BalanceChart data={filteredTransactions} />
         <ExpensePieChart data={pieData} />
+        <ExpenseFrequencyChart data={frequencyData } />
+        <MonthlyExpenseChart data={monthlyExpenseData} />
       </div>
     </div>
   );
