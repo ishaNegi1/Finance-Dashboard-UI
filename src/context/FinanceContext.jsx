@@ -32,6 +32,12 @@ export const FinanceProvider = ({ children }) => {
     setTransactions(transactions.filter((t) => t.id !== id));
   };
 
+  const updateTransaction = (updatedTx) => {
+    setTransactions((prev) =>
+      prev.map((tx) => (tx.id === updatedTx.id ? updatedTx : tx)),
+    );
+  };
+
   const [darkMode, setDarkMode] = useState(() => {
     const saved = localStorage.getItem("darkMode");
     return saved ? JSON.parse(saved) : false;
@@ -65,6 +71,7 @@ export const FinanceProvider = ({ children }) => {
         setSelectedYear,
         darkMode,
         setDarkMode,
+        updateTransaction,
       }}
     >
       {children}

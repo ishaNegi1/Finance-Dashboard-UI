@@ -1,6 +1,6 @@
 import { useFinance } from "../../context/FinanceContext";
 
-const TransactionTable = () => {
+const TransactionTable = ({ onEdit }) => {
   const {
     transactions,
     deleteTransaction,
@@ -57,7 +57,11 @@ const TransactionTable = () => {
               <td>₹ {t.amount}</td>
               <td>{t.type}</td>
               {role === "admin" && (
-                <td>
+                <td className="flex gap-2 justify-center">
+                  <button onClick={() => onEdit(t)} className="text-blue-500">
+                    Edit
+                  </button>
+
                   <button
                     onClick={() => deleteTransaction(t.id)}
                     className="text-red-500"
