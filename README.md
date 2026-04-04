@@ -190,7 +190,7 @@ This allows all pages (Dashboard, Transactions, Insights) to access and update s
 
 <h3>1. Clone the repository</h3>
 <pre>
-git clone &lt;your-repository-link&gt;
+git clone &lt;https://github.com/ishaNegi1/Finance-Dashboard-UI.git&gt;
 cd finance-dashboard
 </pre>
 
@@ -242,3 +242,6 @@ This project demonstrates frontend development skills including:
   <li>Dark mode implementation</li>
   <li>Local storage persistence</li>
 </ul>
+
+<h2>Live Demo</h2>
+<a href='https://finance-dashboard-ui-seven-vert.vercel.app/' target='_blank'>Click here</a>
