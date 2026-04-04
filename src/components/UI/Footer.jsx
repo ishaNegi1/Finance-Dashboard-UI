@@ -3,47 +3,59 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="bg-white dark:bg-gray-800 border-t dark:border-gray-700 mt-6">
-      <div className="max-w-7xl mx-auto px-6 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-gray-600 dark:text-gray-300">
-          
+    <footer className="bg-gradient-to-r from-[#0b1a33] via-[#1e3a8a] to-[#5b21b6] text-gray-200 mt-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 sm:py-4 py-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 sm:gap-20 gap-8 text-center">
           <div>
-            <h2 className="text-lg font-semibold text-gray-800 dark:text-white mb-2">
+            <h2 className="text-lg font-semibold mb-2 text-white">
               Finance Dashboard
             </h2>
-            <p className="text-sm">
+            <p className="text-sm text-gray-100 leading-relaxed">
               A finance tracking dashboard to monitor income, expenses, and
               spending patterns with interactive charts and insights.
             </p>
           </div>
 
           <div>
-            <h2 className="text-lg font-semibold text-gray-800 dark:text-white mb-2">
+            <h2 className="text-lg font-semibold mb-2 text-white">
               Quick Links
             </h2>
-            <ul className="space-y-1 text-sm">
+            <ul className="space-y-2 text-sm">
               <li>
-                <Link to="/" className="hover:text-blue-500">Dashboard</Link>
+                <Link
+                  to="/"
+                  className="hover:underline hover:text-gray-200 transition"
+                >
+                  Dashboard
+                </Link>
               </li>
               <li>
-                <Link to="/transactions" className="hover:text-blue-500">Transactions</Link>
+                <Link
+                  to="/transactions"
+                  className="hover:underline hover:text-gray-200 transition"
+                >
+                  Transactions
+                </Link>
               </li>
               <li>
-                <Link to="/insights" className="hover:text-blue-500">Insights</Link>
+                <Link
+                  to="/insights"
+                  className="hover:underline hover:text-gray-200 transition"
+                >
+                  Insights
+                </Link>
               </li>
             </ul>
           </div>
 
-          <div>
-            <h2 className="text-lg font-semibold text-gray-800 dark:text-white mb-2">
-              Contact
-            </h2>
-            <div className="flex items-center gap-4 mt-2">
+          <div className=" text-center">
+            <h2 className="text-lg font-semibold mb-2 text-white">Contact</h2>
+            <div className="flex items-center gap-5 mt-3 justify-center">
               <a
                 href="https://github.com/ishaNegi1"
                 target="_blank"
                 rel="noreferrer"
-                className="hover:text-blue-500 text-xl"
+                className="text-2xl hover:scale-110 transition transform"
               >
                 <FaGithub />
               </a>
@@ -52,14 +64,14 @@ const Footer = () => {
                 href="https://www.linkedin.com/in/isha-negi-791a33296/"
                 target="_blank"
                 rel="noreferrer"
-                className="hover:text-blue-500 text-xl"
+                className="text-2xl hover:scale-110 transition transform"
               >
                 <FaLinkedin />
               </a>
 
               <a
                 href="mailto:negi.isha98@gmail.com"
-                className="hover:text-blue-500 text-xl"
+                className="text-2xl hover:scale-110 transition transform"
               >
                 <FaEnvelope />
               </a>
@@ -67,11 +79,9 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t dark:border-gray-700 mt-6 pt-4 text-center text-sm text-gray-500 dark:text-gray-400">
+        <div className="border-t border-white/30 mt-8 pt-4 text-center text-sm text-gray-100">
           <p>Built with React, Tailwind CSS, Recharts & Context API</p>
-          <p className="mt-1">
-            © {new Date().getFullYear()} Finance Dashboard
-          </p>
+          <p className="mt-1">© {new Date().getFullYear()} Finance Dashboard</p>
         </div>
       </div>
     </footer>

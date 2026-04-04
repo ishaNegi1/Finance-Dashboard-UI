@@ -18,11 +18,15 @@ const COLORS = [
 
 const ExpensePieChart = ({ data }) => {
   return (
-    <div className="bg-white p-4 rounded-2xl shadow">
-      <h2 className="mb-4 font-semibold">Expense Breakdown</h2>
+    <div className="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-2xl shadow-md">
+      <h2 className="mb-4 font-semibold text-gray-800 dark:text-white text-lg">
+        Expense Breakdown
+      </h2>
 
       {data.length === 0 ? (
-        <p className="text-gray-500">No data available for selected period</p>
+        <p className="text-gray-500 dark:text-gray-400">
+          No data available for selected period
+        </p>
       ) : (
         <ResponsiveContainer width="100%" height={300}>
           <PieChart>
@@ -42,7 +46,8 @@ const ExpensePieChart = ({ data }) => {
             </Pie>
             <Tooltip
               contentStyle={{
-                backgroundColor: "#1F2937",
+                backgroundColor: "#111827",
+                borderRadius: "8px",
                 border: "none",
                 color: "white",
               }}

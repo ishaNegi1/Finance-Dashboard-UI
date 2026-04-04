@@ -21,60 +21,78 @@ const TransactionTable = ({ onEdit }) => {
     })
     .filter((t) => t.description.toLowerCase().includes(search.toLowerCase()))
     .filter((t) => (filterType === "all" ? true : t.type === filterType))
-    .sort((a, b) => new Date(a.date) - new Date(b.date));
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
 
   return (
-    <table className="w-full bg-white shadow rounded-2xl">
-      <thead>
-        <tr className="border-b">
-          <th>Date</th>
-          <th>Description</th>
-          <th>Category</th>
-          <th>Amount</th>
-          <th>Type</th>
-          {role === "admin" && <th>Action</th>}
-        </tr>
-      </thead>
-      <tbody>
-        {filtered.length === 0 ? (
-          <tr>
-            <td colSpan="6" className="text-center p-4 text-gray-500">
-              No transactions found
-            </td>
-          </tr>
-        ) : (
-          filtered.map((t) => (
-            <tr key={t.id} className="text-center border-b">
-              <td>
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-9">
+      {filtered.length === 0 ? (
+        <p className="text-gray-500 dark:text-gray-400">
+          No transactions found
+        </p>
+      ) : (
+        filtered.map((t) => (
+          <div
+            key={t.id}
+            className="bg-white dark:bg-gray-800 rounded-2xl shadow-md p-5 
+            transition transform hover:-translate-y-1 hover:shadow-lg"
+          >
+            <div className="flex justify-between items-center mb-3">
+              <span className="text-sm text-gray-600 dark:text-gray-300">
                 {new Date(t.date).toLocaleDateString("en-IN", {
                   day: "numeric",
                   month: "short",
                   year: "numeric",
                 })}
-              </td>
-              <td>{t.description}</td>
-              <td>{t.category}</td>
-              <td>₹ {t.amount}</td>
-              <td>{t.type}</td>
-              {role === "admin" && (
-                <td className="flex gap-2 justify-center">
-                  <button onClick={() => onEdit(t)} className="text-blue-500">
-                    Edit
-                  </button>
+              </span>
 
-                  <button
-                    onClick={() => deleteTransaction(t.id)}
-                    className="text-red-500"
-                  >
-                    Delete
-                  </button>
-                </td>
-              )}
-            </tr>
-          ))
-        )}
-      </tbody>
-    </table>
+              <span
+                className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                  t.type === "income"
+                    ? "bg-green-100 text-green-600 dark:bg-green-900 dark:text-green-300"
+                    : "bg-red-100 text-red-600 dark:bg-red-900 dark:text-red-300"
+                }`}
+              >
+                {t.type}
+              </span>
+            </div>
+
+            <h3 className="text-lg font-semibold text-[#0b1a33] dark:text-white">
+              {t.description}
+            </h3>
+
+            <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
+              Category: {t.category}
+            </p>
+
+            <p
+              className={`text-xl font-bold mt-3 ${
+                t.type === "income" ? "text-green-500" : "text-red-500"
+              }`}
+            >
+              ₹ {t.amount}
+            </p>
+
+            {role === "admin" && (
+              <div className="flex justify-between mt-4">
+                <button
+                  onClick={() => onEdit(t)}
+                  className="text-blue-500 hover:text-blue-700 font-medium"
+                >
+                  Edit
+                </button>
+
+                <button
+                  onClick={() => deleteTransaction(t.id)}
+                  className="text-red-500 hover:text-red-700 font-medium"
+                >
+                  Delete
+                </button>
+              </div>
+            )}
+          </div>
+        ))
+      )}
+    </div>
   );
 };
 

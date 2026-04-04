@@ -8,7 +8,7 @@ const Transactions = () => {
   const [selectedTx, setSelectedTx] = useState(null);
 
   return (
-    <div className="p-6">
+    <div className=" sm:p-6 p-2">
       <TransactionForm />
       <Filters />
 

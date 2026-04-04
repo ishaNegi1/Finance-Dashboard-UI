@@ -5,11 +5,14 @@ const DateFilter = () => {
     useFinance();
 
   return (
-    <div className="flex gap-4">
+    <div className="flex flex-wrap gap-2 sm:gap-3 justify-center">
       <select
         value={selectedMonth}
         onChange={(e) => setSelectedMonth(e.target.value)}
-        className="border p-2 rounded"
+        className="border border-gray-300 p-2 rounded-md text-sm sm:text-base
+        bg-white text-gray-700 dark:bg-gray-800 dark:text-white
+        focus:outline-none focus:ring-2 focus:ring-blue-400
+        hover:border-blue-400 transition duration-200"
       >
         <option value="all">All Months</option>
         <option value="01">Jan</option>
@@ -29,7 +32,10 @@ const DateFilter = () => {
       <select
         value={selectedYear}
         onChange={(e) => setSelectedYear(e.target.value)}
-        className="border p-2 rounded"
+        className="border border-gray-300 p-2 rounded-md text-sm sm:text-base
+        bg-white text-gray-700 dark:bg-gray-800 dark:text-white
+        focus:outline-none focus:ring-2 focus:ring-purple-400
+        hover:border-purple-400 transition duration-200"
       >
         <option value="all">All Years</option>
         <option value="2026">2026</option>

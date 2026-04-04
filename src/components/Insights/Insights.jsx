@@ -71,27 +71,49 @@ const Insights = () => {
     : 0;
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <div className="bg-white p-4 rounded-2xl shadow">
-        <h3 className="text-gray-500">Total Expense</h3>
-        <p className="text-xl font-bold mt-2">₹ {totalExpense}</p>
+    <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-6 gap-8">
+      <div className="animated-border rounded-2xl">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl p-5 sm:text-start text-center">
+          <h3 className="text-gray-600 dark:text-gray-300 text-base">
+            Total Expense
+          </h3>
+          <p className="text-lg font-semibold mt-2 text-[#0b1a33] dark:text-white">
+            ₹ {totalExpense}
+          </p>
+        </div>
       </div>
 
-      <div className="bg-white p-4 rounded-2xl shadow">
-        <h3 className="text-gray-500">Highest Spending Category</h3>
-        <p className="text-xl font-bold mt-2">{highestCategory}</p>
+      <div className="animated-border rounded-2xl">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl p-5 sm:text-start text-center">
+          <h3 className="text-gray-600 dark:text-gray-300 text-base">
+            Highest Spending Category
+          </h3>
+          <p className="text-lg font-semibold mt-2 text-[#0b1a33] dark:text-white">
+            {highestCategory}
+          </p>
+        </div>
       </div>
 
-      <div className="bg-white p-4 rounded-2xl shadow">
-        <h3 className="text-gray-500">Monthly Comparison</h3>
-        <p className="text-lg font-semibold mt-2">{comparisonText}</p>
+      <div className="animated-border rounded-2xl">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl p-5 sm:text-start text-center">
+          <h3 className="text-gray-600 dark:text-gray-300 text-base">
+            Monthly Comparison
+          </h3>
+          <p className="text-lg font-semibold mt-2 text-[#0b1a33] dark:text-white">
+            {comparisonText}
+          </p>
+        </div>
       </div>
 
-      <div className="bg-white p-4 rounded-2xl shadow">
-        <h3 className="text-gray-500">Savings Rate</h3>
-        <p className="text-lg font-semibold mt-2">
-          {savingsRate}% of income saved
-        </p>
+      <div className="animated-border rounded-2xl">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl p-5 sm:text-start text-center">
+          <h3 className="text-gray-600 dark:text-gray-300 text-base">
+            Savings Rate
+          </h3>
+          <p className="text-lg font-semibold mt-2 text-[#0b1a33] dark:text-white">
+            {savingsRate}% of income saved
+          </p>
+        </div>
       </div>
     </div>
   );
