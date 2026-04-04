@@ -61,6 +61,7 @@ This project focuses on clean UI design, component structure, state management, 
       <li>Sort by date</li>
       <li>Add transaction (Admin only)</li>
       <li>Delete transaction (Admin only)</li>
+      <li>Edit transaction (Admin only)</li>
     </ul>
   </li>
 </ul>
@@ -74,7 +75,7 @@ This project focuses on clean UI design, component structure, state management, 
   </li>
   <li>Admin:
     <ul>
-      <li>Can add and delete transactions</li>
+      <li>Can add, delete and edit transactions</li>
     </ul>
   </li>
   <li>Role can be switched using a dropdown in the navbar</li>

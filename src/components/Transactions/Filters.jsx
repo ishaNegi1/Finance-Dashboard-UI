@@ -5,7 +5,7 @@ const Filters = () => {
 
   return (
     <div
-      className="bg-white dark:bg-gray-800 p-4 rounded-2xl shadow-md mt-6 mb-10 
+      className="bg-white dark:bg-gray-800 p-4 rounded-2xl shadow-md mb-10 
     flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-between"
     >
       <input
